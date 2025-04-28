@@ -17,3 +17,7 @@ class Users (AbstractUser):
     
     def is_store_admin(self):
         return self.user_type == 'STORE_ADMIN'
+    
+    def save (self, *args, **kwargs):
+        self.set_password(self.password)
+        super().save(*args, **kwargs)

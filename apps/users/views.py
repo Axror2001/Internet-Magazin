@@ -9,6 +9,7 @@ def login_view(request):
 
         if form.is_valid():
             user = form.get_user()
+            login(request,user)
             
             if user.user_type == 'ADMIN':
                 return redirect ('admin_dashboard')
@@ -16,8 +17,8 @@ def login_view(request):
                 return redirect ('store_admin_dashboard')
             
             return redirect('store')
-        else:
-            form = AuthenticationForm()
+    else:
+        form = AuthenticationForm()
 
     return render(request, 'users/login.html', {'form': form})
 
