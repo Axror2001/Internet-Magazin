@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 def login_view(request):
@@ -23,10 +24,11 @@ def login_view(request):
     return render(request, 'users/login.html', {'form': form})
 
 
-
+@login_required
 def admin_dashboard(request):
     return render(request,'users/admin_dashboard.html')
 
+@login_required
 def store_admin_dashboard(request):
     return render(request,'users/store_admin_dashboard.html')
 
