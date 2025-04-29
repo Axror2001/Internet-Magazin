@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Mening app larim
     'apps.users',
+    'apps.stores',
 ]
 
 MIDDLEWARE = [
