@@ -2,15 +2,28 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class Users (AbstractUser):
-    USERS_TYPES = (
+class EstoreUsers (AbstractUser):
+    '''
+    Django ni o'zini User modelini ustidan
+    yozvoryabmiz, bizda 3 ta turdagi foydalanuvchi 
+    boladi: Admin, Store Admin, Client
+    '''
+
+    USERS_TYPES_CHOICES = (
         ('ADMIN', 'Admin'),
         ('STORE_ADMIN', 'Store Admin'),
-        ('USER', 'User')
+        ('Client', 'Client')
     )
 
-    user_type = models.CharField(max_length=20, choices=USERS_TYPES,
-                                 default='USER')
+    user_type = models.CharField(max_length=20, 
+                                 choices=USERS_TYPES_CHOICES,
+                                 default='Client')
+    
+    phone_number = models.CharField(max_length=15,
+                                    blank=True,
+                                    null=True)
+    
+    address = models.TextField(blank=True, null=True)
     
     def is_admin(self):
         return self.user_type == 'ADMIN' and self.is_superuser
