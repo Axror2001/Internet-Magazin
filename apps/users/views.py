@@ -13,13 +13,13 @@ def login(request):
             user = form.get_user()
             login(request,user)
             
-            # if user.user_type == 'ADMIN':
-            #     return redirect ('admin_dashboard')
+            if user.user_type == 'ADMIN':
+                return redirect ('admin_dashboard')
             # elif user.user_type == 'STORE_ADMIN':
             #     return redirect ('store_admin_dashboard')
-            
             # return redirect('store')
-            return HttpResponse(f"Username: f{request.user.username}, User type: f{request.user.user_type}")
+            return HttpResponse(
+                f"Username: f{request.user.username}, User type: f{request.user.user_type}")
     else:
         form = AuthenticationForm()
 
@@ -27,8 +27,8 @@ def login(request):
 
 
 # @login_required
-# def admin_dashboard(request):
-#     return render(request,'users/admin_dashboard.html')
+def admin_dashboard(request):
+    return render(request,'users/admin_dashboard.html', context= {})
 
 # @login_required
 # def store_admin_dashboard(request):
