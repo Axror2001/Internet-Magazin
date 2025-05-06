@@ -27,8 +27,6 @@ def login(request):
 
 
 # @login_required
-def admin_dashboard(request):
-    return render(request,'users/admin_dashboard.html', context= {})
 
 # @login_required
 # def store_admin_dashboard(request):
