@@ -1,17 +1,10 @@
 from django.urls import path
-# from django.contrib.auth import views as auth_views
-from .views import login
+from apps.core.views import admin_dashboard, store_admin, index  # index ham import qilindi
+from .views import my_login
 
 urlpatterns = [
-    path('login/', login, name='login'),
-
-#     path('login/', auth_views.LogoutView.as_view(next_page='login'),
-#          name='logout'),
-
-#     path ('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
-    
-#     path('store-admin-dashboard/', views.store_admin_dashboard,
-#          name='store_admin_dashboard'),
-         
-#     path('store/', views.store, name='store')
+    path('', index, name='index'),  # index sahifasi (asosiy sahifa)
+    path('login/', my_login, name='login'),
+    path('admin_dashboard/', admin_dashboard, name='admin_dashboard'),
+    path('store_admin/', store_admin, name='store_admin'),
 ]
